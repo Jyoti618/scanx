@@ -22,7 +22,7 @@ public final class Config {
     public static final String DB_USER = env("SCANX_DB_USER", "root");
 
     /** Put your MySQL password here, or set SCANX_DB_PASSWORD. */
-    public static final String DB_PASSWORD = env("SCANX_DB_PASSWORD", "jy9621oti#");
+    public static final String DB_PASSWORD = env("SCANX_DB_PASSWORD", "your_mysql_password");
 
     /**
      * Only needed if you open the site from another address, for example
@@ -38,7 +38,7 @@ public final class Config {
 
     /** Teacher account created on first start. CHANGE THE PASSWORD. */
     public static final String ADMIN_USER = env("SCANX_ADMIN_USER", "admin");
-    public static final String ADMIN_PASSWORD = env("SCANX_ADMIN_PASSWORD", "kum8114#");
+    public static final String ADMIN_PASSWORD = env("SCANX_ADMIN_PASSWORD", "1234");
 
     /** Password given to a student when the teacher adds them. */
     public static final String DEFAULT_STUDENT_PASSWORD = env("SCANX_STUDENT_PASSWORD", "1234");
