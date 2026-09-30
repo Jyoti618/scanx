@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCANX — Attendance & Academic Planner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">SCANX<span>*</span></div>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#features">Features</a>
+    </div>
+    <div class="nav-buttons">
+        <button class="login-btn" type="button" onclick="openLogin()">Login</button>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <span class="little-note">Day &amp; subject attendance</span>
+        <h1>Attendance, <span class="highlight">but smarter.</span></h1>
+        <p class="hero-description">
+            SCANX tracks who's on campus, keeps a subject-wise class register,
+            and tells every student exactly where they stand.
+        </p>
+        <button class="scan-button" type="button" onclick="openLogin()">Sign in →</button>
+    </div>
+    <div class="blob"></div>
+    <div class="blob-purple"></div>
+    <div class="phones">
+        <div class="phone phone-one">
+            <div class="screen">
+                <div class="camera"></div>
+                <div class="phone-header"><span>9:41</span><span>●●●</span></div>
+                <p class="phone-title">Good morning 👋</p>
+                <small>Here's your attendance</small>
+                <div class="attendance-circle"><div class="attendance-inner"><strong>87%</strong><small>Overall</small></div></div>
+                <div class="subject"><span>Present days</span><strong>52 / 60</strong></div>
+                <div class="subject"><span>This week</span><strong>5 / 6</strong></div>
+            </div>
+        </div>
+        <div class="phone phone-two">
+            <div class="screen">
+                <div class="camera"></div>
+                <div class="phone-header"><span>SCANX</span><span>GATE</span></div>
+                <p class="scanner-title">Scan to enter</p>
+                <div class="scanner-area" id="scannerArea">
+                    <div class="qr"></div>
+                    <div class="scanner-line"></div>
+                </div>
+                <p class="scan-status" id="scanStatus">Ready</p>
+                <button class="scan-now" type="button" onclick="startScanning()">Try the demo</button>
+                <div class="success" id="success"><span class="success-icon">✓</span><br><small>Entry recorded</small></div>
+            </div>
+        </div>
+        <div class="phone phone-three">
+            <div class="screen">
+                <div class="camera"></div>
+                <div class="phone-header"><span>SCANX</span><span>TODAY</span></div>
+                <p class="phone-title">Your week</p>
+                <div class="target-card"><small>ATTENDANCE TARGET</small><h2>75%</h2><small>4 full days needed this month</small></div>
+                <div class="test-card"><strong>AI Workshop</strong><br><small>Fri · Seminar Hall</small></div>
+            </div>
+        </div>
+    </div>
+    <p class="doodle">tap → scan → done</p>
+</section>
+
+<section class="how-section" id="how-it-works">
+    <p class="section-label keep-case">How SCANX works</p>
+    <div class="how-layout">
+        <div class="how-intro">
+            <h2>Three parts. <span>One system.</span></h2>
+            <p>A gate scan marks the day. A teacher's register marks the class. Everyone sees where they stand.</p>
+            <p class="hand-note">no more paper registers</p>
+        </div>
+        <div>
+            <div class="steps">
+                <button class="step active" type="button" data-step="0"><span class="step-number">01</span><span class="step-name">SCAN</span><span class="step-arrow">↗</span></button>
+                <button class="step" type="button" data-step="1"><span class="step-number">02</span><span class="step-name">REGISTER</span><span class="step-arrow">↗</span></button>
+                <button class="step" type="button" data-step="2"><span class="step-number">03</span><span class="step-name">TRACK</span><span class="step-arrow">↗</span></button>
+                <button class="step" type="button" data-step="3"><span class="step-number">04</span><span class="step-name">PLAN</span><span class="step-arrow">↗</span></button>
+            </div>
+            <div class="step-display" id="stepDisplay">
+                <div class="display-number" id="displayNumber">01</div>
+                <div>
+                    <h3 id="stepTitle">Scan at the gate</h3>
+                    <p id="stepDescription">Scan a QR code, or use your face, when you enter and leave college.</p>
+                </div>
+                <div class="display-icon" id="stepIcon">◇</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <h2 class="feature-heading">Everything you need. <span>All in one place.</span></h2>
+    <div class="feature-grid">
+        <div class="feature">
+            <p class="feature-number">01 / 04</p>
+            <div class="feature-icon">◔</div>
+            <h3>Day attendance</h3>
+            <p>Gate scans mark full, half or absent days automatically, based on your college's own timing.</p>
+        </div>
+        <div class="feature">
+            <p class="feature-number">02 / 04</p>
+            <div class="feature-icon">▤</div>
+            <h3>Subject register</h3>
+            <p>Teachers take a real class-by-class register, so subject attendance reflects who actually attended.</p>
+        </div>
+        <div class="feature">
+            <p class="feature-number">03 / 04</p>
+            <div class="feature-icon">🕓</div>
+            <h3>Attendance planner</h3>
+            <p>See exactly how many more full days you need to reach your target by any date.</p>
+        </div>
+        <div class="feature">
+            <p class="feature-number">04 / 04</p>
+            <div class="feature-icon">🗓</div>
+            <h3>Events &amp; reminders</h3>
+            <p>Official events from staff, and your own reminders, in one calendar.</p>
+        </div>
+    </div>
+</section>
+
+<section class="login-section" id="login-section">
+    <div class="login-container">
+        <div class="login-intro">
+            <div class="login-logo">SCANX<span>*</span></div>
+            <p class="little-note keep-case">Smart attendance &amp; academic planner</p>
+            <h1>One login.<br>Every role.</h1>
+            <p class="login-description">Students, teachers and admins all sign in here — SCANX opens the right dashboard for you.</p>
+        </div>
+        <div class="login-card">
+            <div class="login-card-header">
+                <p class="keep-case">Welcome to SCANX</p>
+                <h2>Sign in</h2>
+                <span>Use your student ID or staff username.</span>
+            </div>
+            <form id="loginForm">
+                <label for="loginUsername">Username or student ID</label>
+                <input type="text" id="loginUsername" autocomplete="username" required>
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" autocomplete="current-password" required>
+                <div class="login-options">
+                    <label class="remember-option">
+                        <input type="checkbox" id="rememberMe" checked>
+                        Remember me
+                    </label>
+                    <button type="button" class="forgot-password" id="forgotPassword">Forgot password?</button>
+                </div>
+                <button type="submit" class="login-submit">Sign in →</button>
+                <p class="login-message" id="loginMessage"></p>
+            </form>
+            <div class="login-demo">
+                <span class="keep-case"><strong>Demo logins</strong></span>
+                <span>Student: <strong>ST001</strong> / <strong>1234</strong></span>
+                <span>Teacher: <strong>teacher</strong> / <strong>1234</strong></span>
+                <span>Admin: <strong>admin</strong> / <strong>1234</strong></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-section" id="student-app">
+    <div class="dashboard">
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-logo">SCANX<span>*</span></div>
+            <nav class="dashboard-nav">
+                <button class="dashboard-nav-item active" data-page="dashboard-page" type="button"><span>⌂</span>Dashboard</button>
+                <button class="dashboard-nav-item" data-page="attendance-page" type="button"><span>◔</span>Attendance</button>
+                <button class="dashboard-nav-item" data-page="planner-page" type="button"><span>🕓</span>Planner</button>
+                <button class="dashboard-nav-item" data-page="calendar-page" type="button"><span>▥</span>Calendar</button>
+                <button class="dashboard-nav-item" data-page="reminders-page" type="button"><span>◇</span>Reminders</button>
+                <button class="dashboard-nav-item" data-page="myid-page" type="button"><span>▦</span>My ID</button>
+            </nav>
+            <div class="dashboard-sidebar-bottom">
+                <button class="dashboard-nav-item" data-page="settings-page" type="button"><span>⚙</span>Settings</button>
+                <button class="dashboard-nav-item" id="studentLogout" type="button"><span>↪</span>Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+
+            <div class="dashboard-page active-page" id="dashboard-page">
+                <header class="dashboard-topbar">
+                    <div>
+                        <p class="dashboard-small-text" id="studentDashLabel">Student dashboard</p>
+                        <h2 id="studentGreeting">Good morning 👋</h2>
+                    </div>
+                    <div class="dashboard-user">
+                        <button class="notification-button" type="button" id="studentBell">🔔<span class="notification-dot" id="studentBellDot" hidden></span></button>
+                        <div class="user-avatar" id="studentAvatar">S</div>
+                    </div>
+                </header>
+                <div id="studentBellPanel" class="sx-panel sx-notify-panel" hidden></div>
+
+                <section class="dashboard-grid">
+                    <div class="attendance-card">
+                        <div class="card-heading">
+                            <div>
+                                <p>Overall attendance</p>
+                                <h1 id="overallAttendance">—</h1>
+                            </div>
+                            <span class="attendance-status" id="attendanceStatus">No data yet</span>
+                        </div>
+                        <div class="attendance-bar"><div class="attendance-progress" id="attendanceProgress" style="width:0%"></div></div>
+                        <div class="attendance-info">
+                            <div class="attendance-info-box"><span>Full days</span><strong id="fullDaysCount">0</strong></div>
+                            <div class="attendance-info-box"><span>Half days</span><strong id="halfDaysCount">0</strong></div>
+                            <div class="attendance-info-box"><span>Absent days</span><strong id="absentDaysCount">0</strong></div>
+                        </div>
+                        <p class="card-description" id="attendanceDescription">Your attendance will show here after your first gate scan.</p>
+                        <div class="attendance-plan">
+                            <span class="plan-label">Today</span>
+                            <h3 id="todayStatusHeading">Not scanned yet</h3>
+                            <p id="todayStatusText">Scan in at the gate, or use the button to check yourself in with your face.</p>
+                        </div>
+                    </div>
+                    <div class="quick-scan-card">
+                        <div class="scan-symbol">⌁</div>
+                        <div><p>Quick action</p><h3 id="quickScanTitle">Check in</h3></div>
+                        <button class="scan-dashboard-btn" id="studentSelfScan" type="button">Scan my face →</button>
+                    </div>
+                </section>
+
+                <section class="dashboard-lower-grid">
+                    <div class="events-card">
+                        <div class="section-heading"><div><p>Upcoming</p><h2>Academic events</h2></div><button class="view-all-btn" type="button" data-goto="calendar-page">Calendar →</button></div>
+                        <div id="homeEventsList"></div>
+                    </div>
+                    <div class="planner-card">
+                        <p class="section-label">Attendance planner</p>
+                        <h2>Reach your target</h2>
+                        <div class="planner-percentage" id="homePlannerPercent">—</div>
+                        <p id="homePlannerMessage">Set a target date in the planner.</p>
+                        <button class="planner-btn" type="button" data-goto="planner-page">Open planner →</button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="dashboard-page" id="attendance-page">
+                <div class="page-header"><p class="section-label">Attendance</p><h1>My Attendance</h1><p id="attClassLabel">Day and subject-wise attendance.</p></div>
+                <div class="attendance-detail-grid">
+                    <div class="detail-stat-card"><span>Overall</span><strong id="attStatOverall">—</strong><p>Current attendance</p></div>
+                    <div class="detail-stat-card"><span>Full days</span><strong id="attStatFull">0</strong><p>Counted as 1</p></div>
+                    <div class="detail-stat-card"><span>Half days</span><strong id="attStatHalf">0</strong><p>Counted as 0.5</p></div>
+                    <div class="detail-stat-card"><span>Absent days</span><strong id="attStatAbsent">0</strong><p>Counted as 0</p></div>
+                </div>
+                <div class="calendar-card">
+                    <div class="calendar-top"><button type="button" id="attCalPrev">←</button><h2 id="attCalTitle">Month</h2><button type="button" id="attCalNext">→</button></div>
+                    <div class="calendar-week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+                    <div class="calendar-days" id="attCalDays"></div>
+                    <p class="sx-legend">
+                        <span class="sx-legend-dot sx-dot-full"></span> Full
+                        <span class="sx-legend-dot sx-dot-half"></span> Half
+                        <span class="sx-legend-dot sx-dot-absent"></span> Absent
+                    </p>
+                </div>
+                <div class="attendance-table-card">
+                    <div class="section-heading"><div><p class="section-label">Subject breakdown</p><h2>Class register attendance</h2></div></div>
+                    <div class="attendance-row attendance-row-heading"><span>Subject</span><span>Attended</span><span>Total</span><span>Percentage</span></div>
+                    <div id="subjectRows"></div>
+                </div>
+                <div class="attendance-table-card">
+                    <div class="section-heading"><div><p class="section-label">Gate history</p><h2>Recent visits</h2></div></div>
+                    <div class="sx-table-row sx-table-heading"><span>Day</span><span>Entry</span><span>Exit</span><span>Time</span></div>
+                    <div id="presenceRows"></div>
+                </div>
+            </div>
+
+            <div class="dashboard-page" id="planner-page">
+                <div class="page-header"><p class="section-label">Attendance planner</p><h1>Plan your attendance</h1><p>Pick a target and a date to see how many more full days you need.</p></div>
+                <div class="planner-large-card">
+                    <div class="planner-input-area">
+                        <label for="targetAttendance">Target attendance (%)</label>
+                        <input type="number" id="targetAttendance" value="75" min="1" max="100">
+                        <label for="targetDate">Reach it by</label>
+                        <input type="date" id="targetDate">
+                        <button type="button" id="calculatePlanner">Calculate plan →</button>
+                    </div>
+                    <div class="planner-result">
+                        <p class="section-label">Your plan</p>
+                        <div id="plannerResultText">Pick a target and a date.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-page" id="calendar-page">
+                <div class="page-header"><p class="section-label">Academic calendar</p><h1>Calendar</h1><p>Official events, holidays and your own reminders.</p></div>
+                <div class="calendar-layout">
+                    <div class="calendar-card">
+                        <div class="calendar-top"><button type="button" id="calPrev">←</button><h2 id="calTitle">Month</h2><button type="button" id="calNext">→</button></div>
+                        <div class="calendar-week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+                        <div class="calendar-days" id="calDays"></div>
+                        <p class="sx-legend"><span class="sx-legend-dot sx-legend-official"></span> Official event <span class="sx-legend-dot sx-legend-personal"></span> Your reminder <span class="sx-legend-dot sx-legend-holiday"></span> Holiday</p>
+                    </div>
+                    <div class="calendar-events-card"><p class="section-label">This month</p><div id="calEventList"></div></div>
+                </div>
+            </div>
+
+            <div class="dashboard-page" id="reminders-page">
+                <div class="page-header"><p class="section-label">Reminders</p><h1>Reminders</h1><p>Official events from staff, and your own preparation notes.</p></div>
+                <div class="sx-block">
+                    <p class="section-label">From your teachers</p>
+                    <p class="sx-hint">Only staff can change these.</p>
+                    <div class="reminder-list" id="officialReminderList"></div>
+                </div>
+                <div class="sx-block">
+                    <p class="section-label">Your reminders</p>
+                    <div class="reminder-create">
+                        <input type="text" id="reminderInput" placeholder="e.g. Revise unit 3" maxlength="120">
+                        <input type="date" id="reminderDate" aria-label="Reminder date (optional)">
+                        <button type="button" id="addReminder">+ Add reminder</button>
+                    </div>
+                    <div class="reminder-list" id="reminderList"></div>
+                </div>
+            </div>
+
+            <div class="dashboard-page" id="myid-page">
+                <div class="page-header"><p class="section-label keep-case">Identity</p><h1>Your QR code and face</h1><p>Show the QR code at the gate, or use your face to check yourself in.</p></div>
+                <div class="sx-id-layout">
+                    <div class="sx-id-card"><div class="sx-qr" id="myIdQr"></div><strong id="myIdName">Student</strong><span id="myIdNumber">—</span><span id="myIdClass">—</span></div>
+                    <div class="sx-id-face">
+                        <p class="section-label">Face</p>
+                        <h2>Check in with your face</h2>
+                        <p id="faceStatus">No face enrolled yet.</p>
+                        <button type="button" class="sx-btn" id="enrollMyFace">Enroll my face</button>
+                        <p class="sx-hint">Your face template is saved only as a list of numbers, never as a photo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-page" id="settings-page">
+                <div class="page-header"><p class="section-label">Settings</p><h1>Settings</h1><p>Manage your account.</p></div>
+                <div class="sx-panel">
+                    <h2 class="sx-panel-title">Change password</h2>
+                    <div class="sx-form-row">
+                        <input class="sx-input" type="password" id="oldPassword" placeholder="Current password" autocomplete="current-password">
+                        <input class="sx-input" type="password" id="newPassword" placeholder="New password" autocomplete="new-password">
+                        <button type="button" class="sx-btn" id="changePasswordBtn">Update password</button>
+                    </div>
+                    <p class="sx-hint" id="changePasswordMsg"></p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</section>
+
+<section class="admin-dashboard-section" id="staff-app">
+    <div class="admin-dashboard">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">SCANX<span>*</span></div>
+            <p class="admin-role" id="staffRoleLabel">Teacher</p>
+            <nav class="admin-nav">
+                <button class="admin-nav-item active" data-admin-page="admin-home" type="button"><span>⌂</span>Dashboard</button>
+                <button class="admin-nav-item" data-admin-page="admin-scanner" type="button"><span>⌁</span>Scanner</button>
+                <button class="admin-nav-item" data-admin-page="admin-register" type="button"><span>▤</span>Register</button>
+                <button class="admin-nav-item" data-admin-page="admin-students" type="button"><span>◔</span>Students</button>
+                <button class="admin-nav-item" data-admin-page="admin-attendance" type="button"><span>◎</span>Attendance</button>
+                <button class="admin-nav-item" data-admin-page="admin-events" type="button"><span>▥</span>Events</button>
+                <button class="admin-nav-item" data-admin-page="admin-reports" type="button"><span>▦</span>Reports</button>
+            </nav>
+            <div class="admin-sidebar-bottom">
+                <button class="admin-nav-item" data-admin-page="admin-settings" type="button" id="staffSettingsNav"><span>⚙</span>Settings</button>
+                <button class="admin-nav-item" id="staffLogout" type="button"><span>↪</span>Logout</button>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+
+            <div class="admin-page active-admin-page" id="admin-home">
+                <header class="admin-topbar">
+                    <div><p class="admin-small-label" id="staffWelcomeLabel">Staff dashboard</p><h1 id="staffGreeting">Good morning.</h1></div>
+                    <div class="admin-profile">
+                        <button class="admin-notification" type="button" id="staffBell">🔔<span id="staffBellDot" hidden></span></button>
+                        <div class="admin-avatar" id="staffAvatar">T</div>
+                    </div>
+                </header>
+                <div id="staffBellPanel" class="sx-panel sx-notify-panel" hidden></div>
+
+                <div class="admin-stats">
+                    <div class="admin-stat-card"><span>Total students</span><strong id="adminStatStudents">0</strong><p>Registered students</p></div>
+                    <div class="admin-stat-card"><span>Inside now</span><strong id="adminStatInside">0</strong><p>On campus right now</p></div>
+                    <div class="admin-stat-card"><span>Today's visits</span><strong id="adminStatToday">0</strong><p>Gate scans today</p></div>
+                    <div class="admin-stat-card"><span>Below target</span><strong id="adminStatLow">0</strong><p id="adminStatLowSub">Under target attendance</p></div>
+                </div>
+
+                <section class="admin-section">
+                    <div class="admin-section-heading"><div><p>Quick actions</p><h2>Manage SCANX</h2></div></div>
+                    <div class="quick-action-grid">
+                        <button class="quick-action" type="button" data-admin-page="admin-scanner"><span>⌁</span><strong>Gate scanner</strong><small>Entry / exit</small></button>
+                        <button class="quick-action" type="button" data-admin-page="admin-register"><span>▤</span><strong>Take register</strong><small>Mark a class</small></button>
+                        <button class="quick-action" type="button" data-admin-page="admin-events"><span>▥</span><strong>Create event</strong><small>Test, workshop</small></button>
+                        <button class="quick-action" type="button" data-admin-page="admin-reports"><span>▦</span><strong>View reports</strong><small>Low attendance</small></button>
+                    </div>
+                </section>
+
+                <section class="admin-section">
+                    <div class="admin-section-heading"><div><p>Today</p><h2>Recent gate scans</h2></div></div>
+                    <div class="admin-table">
+                        <div class="admin-table-row admin-table-header"><span>Student</span><span>Entry</span><span>Exit</span><span>Status</span></div>
+                        <div id="adminRecentRows"></div>
+                    </div>
+                </section>
+
+                <section class="admin-section">
+                    <div class="admin-section-heading"><div><p>Academic calendar</p><h2>Upcoming events</h2></div><button class="admin-view-button" type="button" data-admin-page="admin-events">Manage events →</button></div>
+                    <div class="admin-event-list" id="adminHomeEvents"></div>
+                </section>
+            </div>
+
+            <div class="admin-page" id="admin-scanner">
+                <div class="admin-page-title"><p>Gate scanner</p><h1>Scan Attendance</h1><span>Scan a student's QR code, ID card, or use their face.</span></div>
+                <div class="admin-scanner-card">
+                    <div class="sx-banner sx-banner-ok" id="scanSessionBanner"><strong>College gate</strong><span id="scanInsideCount">— inside now</span></div>
+                    <div class="admin-scanner-frame" id="adminScanFrame"><div class="scanner-corners"></div><div class="scanner-line"></div><p>Position QR / ID card here</p></div>
+                    <div class="sx-camera-box" id="adminScanCamera" hidden><video id="adminScanVideo" playsinline muted></video><div class="sx-camera-guide"></div></div>
+                    <div class="scanner-controls">
+                        <button type="button" id="adminQrScan">QR scan</button>
+                        <button type="button" id="adminIdScan">ID scan</button>
+                        <button type="button" id="adminFaceScan">Face scan</button>
+                        <button type="button" id="adminScanStop" hidden>Stop camera</button>
+                    </div>
+                    <div class="sx-manual">
+                        <label for="adminManualId">Type or scan an ID</label>
+                        <div class="sx-form-row">
+                            <input class="sx-input" type="text" id="adminManualId" placeholder="e.g. ST001" autocomplete="off" autocapitalize="characters">
+                            <button type="button" class="sx-btn" id="adminManualSubmit">Record</button>
+                        </div>
+                        <small>A USB barcode scanner types the ID and presses Enter, so it works here too.</small>
+                    </div>
+                    <div class="admin-scan-result" id="adminScanResult">Ready to scan.</div>
+                    <div class="sx-history"><p class="section-label">Recent scans</p><div id="adminScanHistory"></div></div>
+                </div>
+            </div>
+
+            <div class="admin-page" id="admin-register">
+                <div class="admin-page-title"><p>Subject register</p><h1>Take a class register</h1><span>Pick a subject, a date and a period, then tick who was present.</span></div>
+                <div class="sx-panel">
+                    <div class="sx-form-row">
+                        <select class="sx-input" id="regCourse" aria-label="Course"><option value="">Select course</option></select>
+                        <select class="sx-input" id="regSemester" aria-label="Semester" disabled><option value="">Select semester</option></select>
+                        <select class="sx-input" id="regSubject" aria-label="Subject" disabled><option value="">Select subject</option></select>
+                        <input class="sx-input" type="date" id="regDate" aria-label="Date">
+                        <input class="sx-input" type="number" id="regPeriod" aria-label="Period" value="1" min="1" max="12" style="max-width:90px">
+                        <button type="button" class="sx-btn" id="regLoad">Load class</button>
+                    </div>
+                </div>
+                <div class="attendance-table-card">
+                    <div class="section-heading"><div><p class="section-label" id="regTakenInfo">No class loaded</p><h2>Class list</h2></div>
+                        <button type="button" class="sx-btn sx-btn-small" id="regMarkAll">Mark all present</button>
+                    </div>
+                    <div id="regRows"></div>
+                    <button type="button" class="sx-btn" id="regSave" style="margin-top:16px" disabled>Save register</button>
+                </div>
+            </div>
+
+            <div class="admin-page" id="admin-students">
+                <div class="admin-page-title"><p>Student management</p><h1>Students</h1><span>Add students, enroll their faces, and see their attendance.</span></div>
+                <div class="sx-panel" id="addStudentPanel">
+                    <h2 class="sx-panel-title">Add a student</h2>
+                    <div class="sx-form-row">
+                        <input class="sx-input" type="text" id="newStudentId" placeholder="Student ID" maxlength="30" autocomplete="off">
+                        <input class="sx-input" type="text" id="newStudentName" placeholder="Full name" maxlength="80" autocomplete="off">
+                        <select class="sx-input" id="newStudentCourse" aria-label="Course"><option value="">Select course</option></select>
+                        <select class="sx-input" id="newStudentSemester" aria-label="Semester" disabled><option value="">Select semester</option></select>
+                        <button type="button" class="sx-btn" id="addStudentBtn">Add student</button>
+                    </div>
+                </div>
+                <div class="student-search">
+                    <input type="text" id="studentSearch" placeholder="Search by name, ID or class..." autocomplete="off">
+                    <select class="sx-input" id="studentFilterSemester" aria-label="Filter by semester"><option value="">All semesters</option></select>
+                </div>
+                <div class="sx-scroll">
+                    <div class="admin-table student-table sx-wide-table">
+                        <div class="admin-table-row admin-table-header"><span>ID</span><span>Name</span><span>Class</span><span>Attendance</span><span>Status</span><span>Actions</span></div>
+                        <div id="studentRows"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-page" id="admin-attendance">
+                <div class="admin-page-title"><p>Attendance</p><h1>Student Attendance</h1><span>Look up a student's day-by-day record, and correct a day if needed.</span></div>
+                <div class="sx-panel">
+                    <div class="sx-form-row">
+                        <input class="sx-input" type="text" id="lookupStudentId" placeholder="Student ID, e.g. ST001">
+                        <button type="button" class="sx-btn" id="lookupStudentBtn">Look up</button>
+                    </div>
+                </div>
+                <div id="lookupResult"></div>
+            </div>
+
+            <div class="admin-page" id="admin-events">
+                <div class="admin-page-title"><p>Official academic events</p><h1>Academic Events</h1><span>Events you create here show up for students. Students cannot change them.</span></div>
+                <div class="event-create-card">
+                    <h2>Create official event</h2>
+                    <div class="event-form">
+                        <input type="text" id="eventTitle" placeholder="Event title" maxlength="100">
+                        <select id="eventType" aria-label="Event type"></select>
+                        <select id="eventCourse" aria-label="Course (leave blank for all)"><option value="">All courses</option></select>
+                        <select id="eventYear" aria-label="Year (leave blank for all)"><option value="">All years</option></select>
+                        <input type="date" id="eventDate" aria-label="Event date">
+                        <input type="time" id="eventTime" aria-label="Event time">
+                        <input type="text" id="eventLocation" placeholder="Location" maxlength="80">
+                        <button type="button" id="createEvent">Create official event</button>
+                        <button type="button" id="cancelEventEdit" class="sx-btn-ghost" hidden>Cancel</button>
+                    </div>
+                </div>
+                <div class="official-events"><h2>Official events</h2><div id="officialEventsList"></div></div>
+            </div>
+
+            <div class="admin-page" id="admin-reports">
+                <div class="admin-page-title"><p>Analytics</p><h1>Reports</h1><span>Students below the attendance target.</span></div>
+                <div class="report-grid">
+                    <div class="report-card"><span>Average attendance</span><strong id="reportAvg">—</strong><p>Across students with data</p></div>
+                    <div class="report-card"><span>Below target</span><strong id="reportLow">0</strong><p>Students under target</p></div>
+                    <div class="report-card"><span>Events</span><strong id="reportEvents">0</strong><p>Official events created</p></div>
+                </div>
+                <div class="admin-section">
+                    <div class="section-heading"><div><p>Needs attention</p><h2>Students below target</h2></div></div>
+                    <div class="admin-table">
+                        <div class="admin-table-row admin-table-header"><span>Student</span><span>Class</span><span>Attendance</span><span>Days</span></div>
+                        <div id="reportLowRows"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-page" id="admin-settings">
+                <div class="admin-page-title"><p>Settings</p><h1>Settings</h1><span>Courses, timings, calendar and staff logins.</span></div>
+
+                <div class="sx-panel">
+                    <h2 class="sx-panel-title">Change your password</h2>
+                    <div class="sx-form-row">
+                        <input class="sx-input" type="password" id="staffOldPassword" placeholder="Current password" autocomplete="current-password">
+                        <input class="sx-input" type="password" id="staffNewPassword" placeholder="New password" autocomplete="new-password">
+                        <button type="button" class="sx-btn" id="staffChangePasswordBtn">Update password</button>
+                    </div>
+                    <p class="sx-hint" id="staffChangePasswordMsg"></p>
+                </div>
+
+                <div id="adminOnlySettings">
+
+                    <div class="sx-panel">
+                        <h2 class="sx-panel-title">Courses &amp; semesters</h2>
+                        <div class="sx-form-row">
+                            <input class="sx-input" type="text" id="newCourseName" placeholder="Course name, e.g. BSc">
+                            <input class="sx-input" type="number" id="newCourseYears" placeholder="Years" value="3" min="1" max="6" style="max-width:100px">
+                            <button type="button" class="sx-btn" id="addCourseBtn">Add course</button>
+                        </div>
+                        <div id="courseList" style="margin-top:18px"></div>
+                    </div>
+
+                    <div class="sx-panel">
+                        <h2 class="sx-panel-title">College timings</h2>
+                        <p class="sx-hint">A student who scans out before the half-day time counts as a half day. Add a new timing to change it from a date onward — for a specific course/year, or for everyone.</p>
+                        <div class="sx-form-row">
+                            <input class="sx-input" type="date" id="timingFrom">
+                            <input class="sx-input" type="time" id="timingHalfDay" value="14:50">
+                            <select class="sx-input" id="timingCourse"><option value="">All courses</option></select>
+                            <select class="sx-input" id="timingYear"><option value="">All years</option></select>
+                            <button type="button" class="sx-btn" id="addTimingBtn">Add timing</button>
+                        </div>
+                        <div id="timingList" style="margin-top:18px"></div>
+                        <h3 style="margin-top:24px">Working days</h3>
+                        <div class="sx-day-picker" id="workingDaysPicker"></div>
+                        <button type="button" class="sx-btn sx-btn-small" id="saveWorkingDaysBtn" style="margin-top:10px">Save working days</button>
+                    </div>
+
+                    <div class="sx-panel">
+                        <h2 class="sx-panel-title">Calendar: holidays &amp; special days</h2>
+                        <div class="sx-form-row">
+                            <input class="sx-input" type="date" id="calDayDate">
+                            <select class="sx-input" id="calDayKind"><option value="HOLIDAY">Holiday</option><option value="SPECIAL">Special (different end time)</option></select>
+                            <input class="sx-input" type="time" id="calDayEndTime" placeholder="End time" hidden>
+                            <input class="sx-input" type="text" id="calDayNote" placeholder="Note" maxlength="100">
+                            <button type="button" class="sx-btn" id="addCalDayBtn">Add</button>
+                        </div>
+                        <div id="calDayList" style="margin-top:18px"></div>
+                    </div>
+
+                    <div class="sx-panel">
+                        <h2 class="sx-panel-title">Staff logins</h2>
+                        <div class="sx-form-row">
+                            <input class="sx-input" type="text" id="newStaffUsername" placeholder="Username">
+                            <input class="sx-input" type="text" id="newStaffName" placeholder="Display name">
+                            <select class="sx-input" id="newStaffRole"><option value="TEACHER">Teacher</option><option value="ADMIN">Admin</option></select>
+                            <input class="sx-input" type="password" id="newStaffPassword" placeholder="Password">
+                            <button type="button" class="sx-btn" id="addStaffBtn">Add login</button>
+                        </div>
+                        <div id="staffListBox" style="margin-top:18px"></div>
+                    </div>
+
+                    <div class="sx-panel sx-panel-quiet">
+                        <h2 class="sx-panel-title">Demo data</h2>
+                        <p class="sx-hint">Everything is stored in MySQL. Reset to start again with the sample course and students.</p>
+                        <button type="button" class="sx-btn sx-btn-ghost" id="resetDemoData">Reset demo data</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+</section>
+
+<div class="sx-modal" id="sxCameraModal" hidden>
+    <div class="sx-modal-card" role="dialog" aria-modal="true" aria-labelledby="sxModalTitle">
+        <div class="sx-modal-head">
+            <div><p class="sx-modal-label" id="sxModalLabel"></p><h2 id="sxModalTitle"></h2></div>
+            <button type="button" class="sx-modal-close" id="sxModalClose" aria-label="Close">✕</button>
+        </div>
+        <div class="sx-camera-box"><video id="sxModalVideo" playsinline muted></video><div class="sx-camera-guide sx-camera-guide-face"></div></div>
+        <p class="sx-modal-status" id="sxModalStatus"></p>
+        <div class="sx-modal-actions" id="sxModalActions"></div>
+    </div>
+</div>
+
+<div class="sx-toast-stack" id="sxToastStack" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
